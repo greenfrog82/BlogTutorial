@@ -25,7 +25,7 @@ SECRET_KEY = '@+opa70wh39y%^=)-3u0(oe36nzlovn!!c_*1(p6afnvzws1u-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['greenfrog.pythonanywhere.com']
+ALLOWED_HOSTS = ['greenfrog.pythonanywhere.com']
 
 
 # Application definition
