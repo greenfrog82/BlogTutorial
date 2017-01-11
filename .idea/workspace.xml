@@ -22,7 +22,7 @@
         <entry file="file://$PROJECT_DIR$/Django_girls_tutorial/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="513">
-              <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+              <caret line="27" column="47" lean-forward="true" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -53,6 +53,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>settings</find>
+      <find>greenfrog.pythonanywhere.com</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -278,7 +279,7 @@
     <entry file="file://$PROJECT_DIR$/Django_girls_tutorial/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
-          <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+          <caret line="27" column="47" lean-forward="true" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
           <folding />
         </state>
       </provider>
