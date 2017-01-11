@@ -15,5 +15,6 @@ class Post(models.Model):
         self.published_date = timezone.now()
         self.save()
 
+    # 이게 html 템플릿에서 {{ }}에 Post객체를 감싸서 전달하면 호출되는 부분
     def __str__(self):
         return self.title
