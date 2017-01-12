@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <title>Django Girls blog</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+{#    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">#}
     <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cherry+Swash" rel="stylesheet">
     <link rel="stylesheet" href="{%  static 'css/blog.css' %}">
 </head>
 <body>
      <div class="page-header">
+         {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+         {% endif %}
         <h1><a href="">Django Girls Blog</a></h1>
     </div>
 {#    container, row, col-md-8은 부트스트랩의 속성인가?#}
@@ -23,8 +26,8 @@
                 {% endblock %}
             </div>
         </div>
-        {% block content2 %}
-        {% endblock %}
-
+{#        {% block content2 %}#}
+{#        {% endblock %}#}
+    </div>
 </body>
 </html>
