@@ -3,7 +3,7 @@
 {% block content %}
     {% for post in posts %}
         <div class="post">
-            <div class="date">published: {{ post.published_date }}</div>
+            <div class="date">출판일: {{ post.published_date }}</div>
             <h1><a href="">{{ post.title }}</a></h1>
             <p>{{ post.text|linebreaksbr }}</p>
         </div>
@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="post">
-                    <div class="date">published: {{ post.published_date }}</div>
+                    <div class="date">출판일: {{ post.published_date }}</div>
                 </div>
             </div>
         </div>
