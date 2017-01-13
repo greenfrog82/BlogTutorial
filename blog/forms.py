@@ -1,12 +1,18 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
-from .models import Post
+from .models import Post, Comment
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'text',)
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('author', 'text',)
 
 
 # 인증 관련 부분 다음 링크 참고해서 구현하였음.
