@@ -4,7 +4,7 @@
  http://blog.narenarya.in/right-way-django-authentication.html
 {% block content %}
     {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
+        <p style="color:red">Your username and password didn't match. Please try again.</p>
     {% endif %}
 
     <form class="form-signin" form method="post" action="{% url 'login' %}">{% csrf_token %}

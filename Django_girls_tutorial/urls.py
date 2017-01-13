@@ -23,6 +23,7 @@ from blog.forms import LoginForm
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/login/$', views.login, {'authentication_form': LoginForm}, name='login'),
+    url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
     url(r'', include('blog.urls')),
 ]
 
