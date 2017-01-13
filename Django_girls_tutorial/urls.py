@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth import views
+from blog.forms import LoginForm
 
+# 인증 관련 부분 다음 링크 참고해서 구현하였음.
+# http://blog.narenarya.in/right-way-django-authentication.html
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^accounts/login/$', views.login, {'authentication_form': LoginForm}, name='login'),
     url(r'', include('blog.urls')),
 ]
 
