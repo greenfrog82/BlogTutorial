@@ -17,4 +17,5 @@ class Post(models.Model):
 
     # 이게 html 템플릿에서 {{ }}에 Post객체를 감싸서 전달하면 호출되는 부분
     def __str__(self):
-        return self.title
+        # return self.title
+        return 'title : %s\ncreated_date : %s\npublished_date : %s\n' % (self.title, self.created_date, self.published_date)

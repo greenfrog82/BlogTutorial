@@ -11,25 +11,15 @@ logging.basicConfig(format='[%(levelname)s][%(funcName)s] %(message)s', level=lo
 logging.debug('initialize view.py')
 
 def post_list(request):
-    logging.debug('call post_list')
-    # posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    posts = Post.objects.all()
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
-def test_post_list(request):
-    posts = Post.objects.all()
-    return render(request, 'blog/test_post_list.html', {'posts': posts})
-
 def post_detail(request, pk):
-    logging.debug('call post_detail')
     post = Post.objects.get(pk=pk)
+    logging.debug('request.user.is_authenticated : %s' % request.user.is_authenticated)
     return render(request, 'blog/post_detail.html', {'post': post})
 
 def post_new(request):
-    logging.debug('user : %s' % request.user)
-    logging.debug('method : %s' % request.method)
-    logging.debug('body : %s' % request.body)
-
     if isinstance(request.user, AnonymousUser):
         return redirect('/admin')
 
@@ -38,19 +28,15 @@ def post_new(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            logging.debug('author : %s' % post.author)
-            post.publish()
+            post.save()
+
             return redirect('post_detail', pk=post.pk)
-        else:
-            logging.debug('The form value is not valied.')
     else:
         form = PostForm()
 
     return render(request, 'blog/post_edit.html', {'form': form})
 
 def post_edit(request, pk):
-    logging.debug('call post_edit')
-
     if isinstance(request.user, AnonymousUser):
         return redirect('/admin')
 
@@ -60,11 +46,29 @@ def post_edit(request, pk):
         # form = PostForm(request.POST, instance=post)
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
+            # 다음 코드를 동작시키면, Post객체가 새로 생성된다.
+            # post = form.save(commit=False)
+            post = form.save()
             post.author = request.user
-            post.publish()
+            post.save()
             return redirect('post_detail', pk=post.pk)
+        else:
+            logging.debug('here?')
     else:
         form = PostForm(instance=post)
 
     return render(request, 'blog/post_edit.html', {'form': form})
+
+def post_draft_list(request):
+    posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
+    return render(request, 'blog/post_draft_list.html', {'posts':posts})
+
+def post_publish(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.publish()
+    return redirect('post_detail', pk=pk)
+
+def post_remove(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect('post_list')
